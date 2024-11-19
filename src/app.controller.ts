@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Patch, Post } from '@nestjs/common';
+import { Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller('movie')
@@ -11,7 +11,7 @@ export class AppController {
   }
 
   @Get(':id')
-  getMovie() {
+  getMovie(@Param('id') id: string) {
     return {
       id: 1,
       name: 'Harry porter',
@@ -29,7 +29,7 @@ export class AppController {
   }
 
   @Patch(':id')
-  patchMovie() {
+  patchMovie(@Param('id') id: string) {
     return {
       id: 3,
       name: '모아나2',
@@ -38,7 +38,7 @@ export class AppController {
   }
 
   @Delete(':id')
-  deleteMovie() {
-    return 3;
+  deleteMovie(@Param('id') id: string) {
+    return id;
   }
 }
